@@ -13,7 +13,7 @@ require_once("include/widgets.inc.php");
         <style>@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');</style>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="script/common.js"></script>
-        <link rel="icon" type="image/x-icon" href="  favicon.png">
+        <link rel="icon" type="image/x-icon" href="favicon.png">
     </head>
     <body>
         <?php
