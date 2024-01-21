@@ -9,7 +9,7 @@ require_once("include/widgets.inc.php");
     <head>
         <title>Proj | Projektering</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href='index.css' rel='stylesheet'>
+		<link href='styles/index.css' rel='stylesheet'>
         <style>@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');</style>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="script/common.js"></script>
