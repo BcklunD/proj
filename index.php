@@ -17,7 +17,6 @@ require_once("include/widgets.inc.php");
     </head>
     <body>
         <?php
-            menu();
             navbar();
             $page = getParam("page");
             echo "<main id='content'>";
@@ -26,11 +25,28 @@ require_once("include/widgets.inc.php");
                 else {
                     echo "
                         <div id='home'>
-                            <h1>Välkommen till Proj</h1>
-                            <p class='subtitle'>Din personliga projekterings-hjälp</p>
+                            <h1 id='title'>Projektplanering på ett enkelt sätt</h1>
+                            <p class='subtitle'>Effektivisera din projektplanering och materialvalsprocess med vårt intuitiva verktyg</p>
                         </div>";
                 }
             echo "</main>";
         ?>
     </body>
 </html>
+<script>
+$(document).ready(() => {
+    const text = "Projektplanering på ett enkelt sätt";
+    for(let i = 0; i < text.length; i++) {
+        setTimeout(() => {
+            $("#title").text(text.substring(0, i + 1));
+        }, 100 * i + Math.floor(Math.random() * 50));
+    }
+});
+$('html').click(function() {
+  //Hide the menus if visible
+});
+
+$('.nav-menu').click(function(event){
+    event.stopPropagation();
+});
+</script>

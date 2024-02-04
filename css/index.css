@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    background-color: #354f52;
     font-family: 'Exo', sans-serif;
 }
 
@@ -14,36 +13,105 @@ p {
 
 #navbar {
     display: flex;
-    column-gap: 20px;
+    column-gap: 30px;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 30px;
     height: 56px;
-    /* background-color: #162447; */
 }
 
-.navbar-header {
-    background-color: #1B1B2F;
+#navbar .navbar-header {
+    color: white;
     padding: 0 15px;
     z-index: 2;
+    margin-right: auto;
+    background-color: #1B1B2F;
+}
+
+#navbar .navbar-header a {
+    color: white;
+}
+
+#navbar .navlink {
+    color: black;
+    font-weight: bold;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+#navbar .navlink::before {
+    content: "•";
+    position: absolute;
+    left: -13px;
+    font-size: 2rem;
+    line-height: .85;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+#navbar .navlink:hover::before {
+    opacity: 1;
+    transition-duration: 0.4s;
 }
 
 #navbar a {
-    color: white;
     text-decoration: none;
 }
 
 #navbar .nav-menu {
+    position: relative;
     transition: margin 0.3s;
 }
 
-#navbar.open .nav-menu {
-    z-index: 2;
-    transition-delay: .1s;
-    margin-left: 170px;
+#navbar #menu-box {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    border: 1px solid #e5e7eb;
+    min-width: 8rem;
+    background: white;
+    z-index: 5;
+    display: none;
 }
 
-#navbar .nav-menu a {
-    color: #E43F5A;
+#navbar #menu-box ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#navbar #menu-box li {
+    color: black;
+    font-size: 1.1rem;
+    line-height: 1.25rem;
+    padding: .5rem 0;
+}
+
+#navbar #menu-box li a {
+    color: black;
+    position: relative;
+    transition: margin .2s;
+}
+
+#navbar #menu-box li a::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: black;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform .2s linear;
+    transform-origin: right;
+}
+
+#navbar #menu-box li a:hover::after,
+#navbar #menu-box li.active a::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .nav-burger {
@@ -70,13 +138,13 @@ p {
     top: -13px;
     left: -2px;
 }
-  
+
 .nav-burger span {
     display: block;
     position: absolute;
     height: 4px;
     width: 100%;
-    background: #d3531a;
+    background: black;
     border-radius: 9px;
     opacity: 1;
     left: 0;
@@ -90,8 +158,8 @@ p {
     transition: .25s ease-in-out;
 }
 
-.nav-burger:hover span {
-    background: white;
+#navbar .nav-menu .nav-burger:hover span {
+    background: silver;
 }
 
 .nav-burger span:nth-child(1) {
@@ -132,80 +200,13 @@ p {
     left: 50%;
 }
 
-#main-menu {
-    background-color: white;
-    width: 400px;
-    height: 100vh;
-    position: absolute;
-    transform: skewX(350deg);
-    margin-left: -500px;
-    transition: all .4s;
-    z-index: 2;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
-                rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
-#main-menu.open {
-    margin-left: -120px;
-}
-
-#main-menu #menu-inner {
-    transform: skewX(10deg);
-    display: flex;
-    margin-left: 100px;
-}
-
-#main-menu #menu-top {
-    width: calc(100% + 1px);
-    height: 56px;
-    background-color: #1B1B2F;
-}
-
-#main-menu #menu-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-top: 10vh;
-    transition: all .3s;
-    transition-delay: .3s;
-}
-
-#main-menu.open #menu-list {
-    margin-left: 40px;
-}
-
-#main-menu #menu-list li {
-    margin-bottom: 25px;
-}
-
-#menu-list li a {
-    text-decoration: none;
-    color: black;
-    border-radius: 5px;
-    padding: 6px;
-    font-size: 1.4rem;
-    transition: all .25s;
-}
-
-#menu-list li a:hover {
-    padding-left: 15px;
-}
-
-#menu-list .active a {
-    color: #d3531a;
-}
-
 main#content {
-    color: white;
     min-height: calc(100vh - 56px);
 }
 
 #home {
     text-align: center;
-}
-
-.subtitle {
-    margin-top: -20px;
+    padding-top: 100px;
 }
 
 #filter-wrapper {
@@ -304,4 +305,16 @@ input.form-input {
 input[type='range'] {
     display: flex;
     flex: 1;
+}
+
+#title {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: #6B7280;
+    margin-top: calc(0.5rem);
 }

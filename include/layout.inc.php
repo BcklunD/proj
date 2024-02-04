@@ -1,6 +1,7 @@
 <?php
 
 function navbar() {
+    $page = getParam('page');
     ?>
     <navbar id='navbar'>
         <div class="navbar-header">
@@ -8,6 +9,8 @@ function navbar() {
                 <h2>Proj</h2>
             </a>
         </div>
+        <a class='navlink' href="index.php">Funktioner</a>
+        <a class='navlink' href="index.php">Pris</a>
         <div class="nav-menu">
             <a href="javascript:toggleMenu()">
                 <div class="nav-burger">
@@ -17,23 +20,14 @@ function navbar() {
                     <span></span>
                 </div>
             </a>
+            <div id="menu-box">
+                <ul id="menu-list">
+                    <li class="<?= str_contains($page, "tak") ? "active" : "" ?>"><a href="index.php?page=pages/tak.php">Tak</a></li>
+                    <li class="<?= str_contains($page, "golv") ? "active" : "" ?>"><a href="index.php?page=pages/golv.php">Golv</a></li>
+                    <li class="<?= str_contains($page, "vaggar") ? "active" : "" ?>"><a href="index.php?page=pages/vaggar.php">Väggar</a></li>
+                </ul>
+            </div>
         </div>
     </navbar>
-    <?php
-}
-
-function menu() {
-    $page = getParam('page');
-    ?>
-    <aside id='main-menu'>
-        <div id="menu-top"></div>
-        <div id="menu-inner">
-            <ul id="menu-list">
-                <li class="<?= str_contains($page, "tak") ? "active" : "" ?>"><a href="index.php?page=pages/tak.php">Tak</a></li>
-                <li class="<?= str_contains($page, "golv") ? "active" : "" ?>"><a href="index.php?page=pages/golv.php">Golv</a></li>
-                <li class="<?= str_contains($page, "vaggar") ? "active" : "" ?>"><a href="index.php?page=pages/vaggar.php">Väggar</a></li>
-            </ul>
-        </div>
-    </aside>
     <?php
 }
