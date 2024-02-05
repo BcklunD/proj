@@ -42,11 +42,4 @@ $(document).ready(() => {
         }, 100 * i + Math.floor(Math.random() * 50));
     }
 });
-$('html').click(function() {
-  //Hide the menus if visible
-});
-
-$('.nav-menu').click(function(event){
-    event.stopPropagation();
-});
 </script>

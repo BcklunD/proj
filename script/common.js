@@ -1,4 +1,4 @@
 function toggleMenu() {
     $("#navbar").toggleClass("open");
-    $("#menu-box").slideToggle("open");
+    $("#menu-box").slideToggle(300);
 }
