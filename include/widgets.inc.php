@@ -40,3 +40,12 @@ function rangeInput($name, $value, $min, $max, $label = "", $onChange = "") {
     });
     </script>";
 }
+
+function buildItemModal($type) {
+    echo "
+    <dialog id='item-modal'>
+        <button id='modal-close' onClick='toggleItemModal()'><i class='fa-solid fa-xmark'></i></button>
+        <h1>Header</h1>
+        <p>text</p>
+    </dialog>";
+}

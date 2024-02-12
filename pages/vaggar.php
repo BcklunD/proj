@@ -21,34 +21,32 @@ foreach($vaggar as $vagg) {
 
 echo "<div id='filter-wrapper'>";
     echo "<aside id='filter-container'>
-        <p>Filter</p>
+        <p class='filter-header'>Väggar</p>
         <div id='filters'>";
         textbox("namn", "", "Namn", "sortVaggar()");
         combobox("tillverkare", $tillverkare, null, "Tillverkare", "sortVaggar()");
         rangeInput("ljudkrav", $minLjud, $minLjud, $maxLjud, "Ljudkrav (dB)", "sortVaggar()");
     echo "</div></aside>";
-    echo "<div id='items'>
-        <h1>Väggar</h1>
-        <div id='item-container'>";
-        foreach($vaggar as $vagg)
-            vaggCard($vagg);
-        echo "</div>
-    </div>
+    echo "<div id='item-container'>";
+    foreach($vaggar as $vagg)
+        vaggCard($vagg);
+    echo "</div>
 </div>";
+
+buildItemModal('vagg');
 
 function vaggCard($vagg) {
     if (strstr($vagg->ljudkrav, "-"))
         $vagg->ljudkrav = explode("-", $vagg->ljudkrav)[1];
-    echo "<div class='item-card' data-namn='$vagg->namn' data-tillverkare='$vagg->tillverkare' data-ljudkrav='$vagg->ljudkrav'>";
-        echo "<p>$vagg->namn</p>";
-        echo "<p>$vagg->tillverkare</p>";
-        echo "<p>Ljudkrav: $vagg->ljudkrav</p>";
-    echo "</div>";
+    echo "<a href='javascript:void(0)' onclick='toggleItemModal(this)' class='item-card' data-namn='$vagg->namn' data-tillverkare='$vagg->tillverkare' data-ljudkrav='$vagg->ljudkrav'>
+            <p class='card-header'>$vagg->tillverkare</p>
+            <p>$vagg->namn</p>
+            <p>Ljudkrav: $vagg->ljudkrav db</p>
+    </a>";
 }
 
 ?>
 <script>
-// let sortTimer = null;
 function sortVaggar() {
     const namn = $("input[name='namn']").val().toLowerCase();
     const tillverkare = $("select[name='tillverkare']").val();

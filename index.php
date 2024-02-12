@@ -9,10 +9,11 @@ require_once("include/widgets.inc.php");
     <head>
         <title>Proj | Projektering</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href='css/index.css' rel='stylesheet'>
+		<link href='css/index.css?v=1' rel='stylesheet'>
         <style>@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');</style>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript" src="script/common.js"></script>
+        <script src="https://kit.fontawesome.com/7666aab81e.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="script/common.js?v=1"></script>
         <link rel="icon" type="image/x-icon" href="favicon.png">
     </head>
     <body>
@@ -25,8 +26,8 @@ require_once("include/widgets.inc.php");
                 else {
                     echo "
                         <div id='home'>
-                            <h1 id='title'>Projektplanering på ett enkelt sätt</h1>
-                            <p class='subtitle'>Effektivisera din projektplanering och materialvalsprocess med vårt intuitiva verktyg</p>
+                            <h1 id='title'></h1>
+                            <p class='subtitle'>Effektivisera din projektering och materialvalsprocess med vårt intuitiva verktyg</p>
                         </div>";
                 }
             echo "</main>";
@@ -35,7 +36,7 @@ require_once("include/widgets.inc.php");
 </html>
 <script>
 $(document).ready(() => {
-    const text = "Projektplanering på ett enkelt sätt";
+    const text = "Projektering på ett enkelt sätt";
     for(let i = 0; i < text.length; i++) {
         setTimeout(() => {
             $("#title").text(text.substring(0, i + 1));
