@@ -297,6 +297,8 @@ input.form-input {
 }
 
 .item-card {
+    width: 180px;
+    height: fit-content;
     border-radius: 3px;
     background-color: white;
     color: black;
@@ -304,7 +306,6 @@ input.form-input {
     box-shadow: rgb(6 24 44 / 19%) 0px 0px 0px 2px, rgb(8 28 49 / 14%) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     flex-direction: column;
     box-sizing: border-box;
-    width: 180px;
     padding: 15px 8px;
     gap: 5px;
     transition: all .2s;
@@ -330,6 +331,9 @@ input.form-input {
     text-align: left;
     margin-bottom: 2px;
     font-size: 18px;
+}
+
+.item-card p:not(.card-header) {
     color: gray;
 }
 
@@ -360,12 +364,12 @@ input[type='range'] {
     margin-top: 30vh;
     opacity: 0;
     transition: all .5s;
-
     width: min(95%, 660px);
     border: none;
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 1rem 2rem;
     min-height: calc(90% - 30vh);
+    box-shadow: rgb(0 0 0 / 30%) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 #item-modal.in {
