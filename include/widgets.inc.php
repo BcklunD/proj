@@ -14,7 +14,7 @@ function combobox($name, $values, $selectedValue, $label = "", $onChange = "") {
 function textbox($name, $value, $label = "", $onChange = "") {
     if (notEmpty($label))
         echo "<label class='form-label' for='$name'>$label</label>";
-    echo "<input type='text' class='form-input' id='$name' name='$name' onInput='$onChange'>$value</input>";
+    echo "<input type='text' class='form-input' id='$name' name='$name' onInput='$onChange' value='$value' />";
 }
 
 function checkbox($name, $value, $label = "", $onChange = "") {

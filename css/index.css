@@ -40,7 +40,7 @@ p {
 #navbar .navlink {
     color: black;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     position: relative;
 }
 
@@ -79,8 +79,8 @@ p {
     right: 0;
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.2), 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    border: 1px solid #cccdcf;
     min-width: 8rem;
     background: white;
     z-index: 5;
@@ -209,10 +209,6 @@ p {
     left: 50%;
 }
 
-main#content {
-    min-height: calc(100vh - 56px);
-}
-
 #home {
     text-align: center;
     padding-top: 100px;
@@ -294,11 +290,11 @@ input.form-input {
     flex-wrap: wrap;
     gap: 30px;
     justify-content: center;
+    align-content: flex-start;
 }
 
 .item-card {
     width: 180px;
-    height: fit-content;
     border-radius: 3px;
     background-color: white;
     color: black;

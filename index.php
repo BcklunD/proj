@@ -1,7 +1,11 @@
 <?php
+require_once("include/database.inc.php");
 require_once("include/layout.inc.php");
 require_once("include/standard.inc.php");
 require_once("include/widgets.inc.php");
+
+define("PREFIX", "");
+connect();
 ?>
 
 <!DOCTYPE HTML>

@@ -1,3 +1,8 @@
 <?php
+require_once '../include/standard.inc.php';
+require_once '../include/database.inc.php';
 require_once "../include/vaggar.inc.php";
-buildVaggarArray();
+
+define("PREFIX", "../");
+connect();
+buildVaggarSQL();

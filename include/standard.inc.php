@@ -23,10 +23,16 @@ function getParam($name, $default = null) {
 	}
 }
 
-class Dummy
+function isProd() {
+	return $_SERVER['SERVER_NAME'] != 'localhost';
+}
+
+function utf8_enc($string)
 {
-	function __get($name)
-	{
-		return null;
-	}
+	return mb_convert_encoding($string, 'UTF-8', 'ISO-8859-1');
+}
+
+function utf8_dec($string)
+{
+	return mb_convert_encoding($string, 'ISO-8859-1', 'UTF-8');	
 }

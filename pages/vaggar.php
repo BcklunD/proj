@@ -1,14 +1,17 @@
 <?php
-require_once __DIR__.'/../include/vaggar.inc.php';
+$namn = getParam("namn");
+$tillverkare = getParam("tillverkare");
+$ljudkrav = getParam("ljudkrav");
 
-$tillverkare = array();
-$tillverkare[] = array(null, "");
+$tillverkares = array();
+$tillverkares[] = array(null, "");
 $minLjud = 999;
 $maxLjud = 0;
 
+$vaggar = rs2objarray(sql("select lopnr, littera as namn, tillverkare, ljudkrav from vagg"));
 foreach($vaggar as $vagg) {
-    if (!array_key_exists($vagg->tillverkare, $tillverkare))
-        $tillverkare[$vagg->tillverkare] = array($vagg->tillverkare, $vagg->tillverkare);
+    if (!array_key_exists($vagg->tillverkare, $tillverkares))
+        $tillverkares[$vagg->tillverkare] = array($vagg->tillverkare, $vagg->tillverkare);
     if (strstr($vagg->ljudkrav, "-"))
         list($lower, $higher) = explode("-", $vagg->ljudkrav);
     else
@@ -23,9 +26,9 @@ echo "<div id='filter-wrapper'>";
     echo "<aside id='filter-container'>
         <p class='filter-header'>Väggar</p>
         <div id='filters'>";
-        textbox("namn", "", "Namn", "sortVaggar()");
-        combobox("tillverkare", $tillverkare, null, "Tillverkare", "sortVaggar()");
-        rangeInput("ljudkrav", $minLjud, $minLjud, $maxLjud, "Ljudkrav (dB)", "sortVaggar()");
+        textbox("namn", $namn, "Namn", "filterVaggar()");
+        combobox("tillverkare", $tillverkares, $tillverkare, "Tillverkare", "filterVaggar()");
+        rangeInput("ljudkrav", $ljudkrav, $minLjud, $maxLjud, "Ljudkrav (dB)", "filterVaggar()");
     echo "</div></aside>";
     echo "<div id='item-container'>";
     foreach($vaggar as $vagg)
@@ -47,7 +50,8 @@ function vaggCard($vagg) {
 
 ?>
 <script>
-function sortVaggar() {
+let urlTimer;
+function filterVaggar() {
     const namn = $("input[name='namn']").val().toLowerCase();
     const tillverkare = $("select[name='tillverkare']").val();
     const ljudkrav = $("input[name='ljudkrav']").val();
@@ -58,5 +62,12 @@ function sortVaggar() {
         hidden = hidden || element.dataset.ljudkrav < ljudkrav;
         $(element).toggleClass("hidden-card", hidden);
     });
+    const url = `index.php?page=pages/vaggar.php&namn=${namn}&tillverkare=${tillverkare}&ljudkrav=${ljudkrav}`;
+    if (urlTimer != null)
+        clearTimeout(urlTimer);
+    urlTimer = setTimeout(() => {
+        window.history.replaceState({}, "", encodeURI(url));
+    }, 1000);
 }
+filterVaggar();
 </script>
