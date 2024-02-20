@@ -10,10 +10,11 @@ function buildVaggarSQL() {
     $inserts = [];
     $emptyRowCount = 0;
     while(true) {
-        $littera = utf8_dec($sheet->getCellByColumnAndRow(3, $row)->getValue());
+        $littera = trim(utf8_dec($sheet->getCellByColumnAndRow(3, $row)->getValue()));
         if (isEmpty($littera)) {
             if ($emptyRowCount++ >= 3)
                 break;
+            $row++;
             continue;
         }
         $lopnr = findValue("select lopnr from vagg where littera=?", null, "s", $littera);

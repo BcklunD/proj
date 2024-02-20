@@ -21,6 +21,7 @@ foreach($vaggar as $vagg) {
     if (notEmpty($higher) && $higher > $maxLjud)
         $maxLjud = $higher;
 }
+$ljudkrav = nvl($ljudkrav, $minLjud);
 
 echo "<div id='filter-wrapper'>";
     echo "<aside id='filter-container'>

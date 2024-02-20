@@ -36,3 +36,10 @@ function utf8_dec($string)
 {
 	return mb_convert_encoding($string, 'ISO-8859-1', 'UTF-8');	
 }
+
+function nvl($value, $default)
+{
+    if (isEmpty($value))
+		return $default;
+    return $value;
+}
