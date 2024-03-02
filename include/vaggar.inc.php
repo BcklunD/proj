@@ -24,6 +24,7 @@ function buildVaggarSQL() {
         $lopnr = $nextLopnr++;
         $inserts[] = "($lopnr, '$littera', '$tillverkare', '$ljudkrav')";
 
+        
         // echo '$vagg = new stdClass();<br/>
         // $vagg->namn = "'.$littera. '";<br/>
         // $vagg->tillverkare = "'. trim(utf8_decode($sheet->getCellByColumnAndRow(5, $row)->getValue())) .'";<br/>
