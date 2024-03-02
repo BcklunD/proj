@@ -1,2 +1,4 @@
 .vercel
 .config.php
+.env
+excel2objects.php

@@ -286,6 +286,7 @@ input.form-input {
 }
 
 #item-container {
+    margin-bottom: 100px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;

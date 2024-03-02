@@ -5,10 +5,15 @@ function connect()
         require_once(PREFIX . ".config.php");
 
     $host = getenv("DB_HOST");
-    $dbuser = getenv("DB_USER");
+    $dbuser = getenv("DB_USERNAME");
     $password = getenv("DB_PASSWORD");
     $database = getenv("DB_NAME");
-	$conn = mysqli_connect($host, $dbuser, $password, $database);	
+	$ssl = getenv("MYSQL_ATTR_SSL_CA");
+	$port = 3306;
+	$conn = mysqli_init();
+	$conn->ssl_set(NULL, NULL, $ssl, NULL, NULL);
+	$conn->real_connect($host, $dbuser, $password, $database, $port);
+	// $conn = mysqli_connect($host, $dbuser, $password, $database);	
 	if ($conn == null) {
 		if (mysqli_connect_errno()) {
 			echo mysqli_connect_error();

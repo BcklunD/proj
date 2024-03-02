@@ -3,7 +3,7 @@
 function buildVaggarSQL() {
     require_once '../vendor/autoload.php';
 
-    $workbook = \PhpOffice\PhpSpreadsheet\IOFactory::load("../excel/väggar.ods");
+    $workbook = \PhpOffice\PhpSpreadsheet\IOFactory::load("../excel/vÃ¤ggar.ods");
     $sheet = $workbook->getActiveSheet();
     $row = 4;
     $nextLopnr = findValue("select max(lopnr) from vagg", 0) + 1;
@@ -17,15 +17,12 @@ function buildVaggarSQL() {
             $row++;
             continue;
         }
-        $lopnr = findValue("select lopnr from vagg where littera=?", null, "s", $littera);
         $emptyRowCount = 0;
 
         $tillverkare = trim(utf8_dec($sheet->getCellByColumnAndRow(5, $row)->getValue()));
         $ljudkrav = utf8_dec($sheet->getCellByColumnAndRow(6, $row)->getValue());
-        if (isEmpty($lopnr)) {
-            $lopnr = $nextLopnr++;
-            $inserts[] = "($lopnr, '$littera', '$tillverkare', '$ljudkrav')";
-        }
+        $lopnr = $nextLopnr++;
+        $inserts[] = "($lopnr, '$littera', '$tillverkare', '$ljudkrav')";
 
         // echo '$vagg = new stdClass();<br/>
         // $vagg->namn = "'.$littera. '";<br/>
